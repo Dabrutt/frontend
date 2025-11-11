@@ -1,0 +1,163 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f2f5; /* Warna background sedikit abu-abu */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Layout utama */
+.register-container {
+  display: flex;
+  background-color: #ffffff; /* Background putih untuk container utama */
+  border-radius: 12px; /* Border radius untuk sudut yang membulat */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Efek shadow */
+  padding: 40px; /* Padding di dalam container */
+  gap: 60px;
+  align-items: center;
+  max-width: 1000px; /* Lebar maksimum container */
+  width: 90%; /* Lebar responsif */
+}
+
+/* Placeholder gambar kiri */
+.image-placeholder {
+  width: 420px;
+  height: 420px;
+  background-color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* agar gambar tidak keluar dari kotak */
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Shadow untuk gambar */
+}
+
+.image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* menyesuaikan tanpa distorsi */
+  border-radius: 8px; /* Pastikan gambar juga memiliki border radius */
+}
+
+/* Bagian form kanan */
+.form-section {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-section h2 {
+  font-weight: 700; /* Sedikit lebih tebal */
+  margin-bottom: 30px; /* Sedikit lebih banyak ruang di bawah judul */
+  font-size: 28px; /* Ukuran font lebih besar */
+  color: #333; /* Warna teks lebih gelap */
+  text-align: center; /* Teks judul di tengah */
+}
+
+/* Form input */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* Jarak antar input sedikit lebih besar */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 14px 16px; /* Padding sedikit lebih besar */
+  border: 1px solid #cdd4da; /* Warna border lebih lembut */
+  border-radius: 8px; /* Border radius sedikit lebih besar */
+  outline: none;
+  transition: all 0.3s ease; /* Transisi untuk efek hover/focus */
+  font-size: 15px;
+  color: #333;
+}
+
+input:focus {
+  border-color: #007bff; /* Warna border saat fokus */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Efek shadow saat fokus */
+}
+
+/* Checkbox dan teks persetujuan */
+.terms {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Jarak antar checkbox dan teks */
+  margin-top: 5px;
+  margin-bottom: 15px; /* Lebih banyak ruang di bawah terms */
+  font-size: 14px;
+  color: #555; /* Warna teks lebih lembut */
+}
+
+.terms input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #007bff; /* Warna checkbox */
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.warning-text {
+  color: #dc3545; /* Warna merah bootstrap */
+  font-weight: 600; /* Sedikit lebih tebal */
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+}
+
+/* Tombol login */
+.btn-login {
+  background-color: #007bff; /* Warna biru bootstrap */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px; /* Padding sedikit lebih besar */
+  font-size: 17px;
+  cursor: pointer;
+  margin-top: 25px; /* Lebih banyak ruang di atas tombol */
+  font-weight: 600; /* Lebih tebal */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  letter-spacing: 0.5px; /* Sedikit jarak antar huruf */
+}
+
+.btn-login:hover {
+  background-color: #0056b3; /* Warna biru lebih gelap saat hover */
+  transform: translateY(-2px); /* Efek sedikit terangkat saat hover */
+}
+
+/* Responsiveness */
+@media (max-width: 992px) {
+  .register-container {
+    flex-direction: column;
+    padding: 30px;
+    gap: 30px;
+  }
+
+  .image-placeholder {
+    width: 100%;
+    height: 300px; /* Tinggi gambar disesuaikan */
+  }
+
+  .form-section {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .register-container {
+    padding: 20px;
+  }
+
+  .form-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .btn-login {
+    padding: 12px;
+    font-size: 16px;
+  }
+}
