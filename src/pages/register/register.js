@@ -70,7 +70,7 @@ afterRender() {
       const name = document.getElementById("regNama").value;
       const email = document.getElementById("regEmail").value;
       const password = document.getElementById("regPassword").value;
-      const alamat = document.getElementById("regAlamat").value;
+      const city = document.getElementById("regAlamat").value;
 
       try {
         const response = await fetch("http://localhost:5000/api/auth/register", {
@@ -82,7 +82,7 @@ afterRender() {
             name,
             email,
             password,
-            alamat
+            city
           }),
         });
 

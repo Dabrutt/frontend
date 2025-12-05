@@ -1,7 +1,5 @@
 export default class LoginPage {
-  // ======================================================
-  // ================ 1. HTML VIEW COMPONENT ===============
-  // ======================================================
+
   render() {
     return `
       
@@ -98,9 +96,6 @@ export default class LoginPage {
     `;
   }
 
-  // ======================================================
-  // ===================== 2. LOGIC =======================
-  // ======================================================
 afterRender() {
   const form = document.getElementById("login-form");
 
@@ -133,6 +128,7 @@ afterRender() {
         console.log("📥 Response JSON:", data);
 
         if (res.ok) {
+          localStorage.setItem("token", data.token);
           alert("Login Berhasil!");
           // contoh redirect
           window.location.hash = "/dashboard";

@@ -23,7 +23,7 @@ export default class LandingPage {
 
         <div class="flex-1 text-center hidden md:block">
           <img 
-            src="/public/image/homepage-hero.png" 
+            src="/image/homepage-hero.png" 
             alt="Feature"
             class="max-w-full h-auto rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
           />
@@ -63,7 +63,7 @@ export default class LandingPage {
 
           <div class="flex-1 text-center">
             <img 
-              src="/public/image/feature-1-landing-page.png" 
+              src="/image/feature-1-landing-page.png" 
               alt="Feature" 
               class="max-w-full h-auto rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.1)]"
             />
