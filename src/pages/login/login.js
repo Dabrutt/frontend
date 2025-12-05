@@ -101,30 +101,64 @@ export default class LoginPage {
   // ======================================================
   // ===================== 2. LOGIC =======================
   // ======================================================
-  afterRender() {
-    // FORM SUBMIT
-    const form = document.getElementById("login-form");
-    if (form) {
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        alert("Login Berhasil!");
-      });
-    }
+afterRender() {
+  const form = document.getElementById("login-form");
 
-    // TOGGLE PASSWORD
-    const toggleBtn = document.getElementById("togglePassword");
+  if (form) {
+    const emailInput = form.querySelector("input[type='email']");
     const passwordInput = document.getElementById("password");
-    const iconShow = document.getElementById("icon-show");
-    const iconHide = document.getElementById("icon-hide");
 
-    if (toggleBtn) {
-      toggleBtn.addEventListener("click", () => {
-        const isHidden = passwordInput.type === "password";
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-        passwordInput.type = isHidden ? "text" : "password";
-        iconShow.classList.toggle("hidden", isHidden);
-        iconHide.classList.toggle("hidden", !isHidden);
-      });
-    }
+      const payload = {
+        email: emailInput.value,
+        password: passwordInput.value,
+      };
+
+      console.log("📤 Sending Login Request:", payload);
+
+      try {
+        const res = await fetch("http://localhost:5000/api/auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        console.log("📥 Response Status:", res.status);
+
+        const data = await res.json();
+        console.log("📥 Response JSON:", data);
+
+        if (res.ok) {
+          alert("Login Berhasil!");
+          // contoh redirect
+          window.location.hash = "/dashboard";
+        } else {
+          alert("Login Gagal: " + data.message);
+        }
+      } catch (error) {
+        console.error("❌ Network Error:", error);
+        alert("Tidak bisa terhubung ke server.");
+      }
+    });
   }
+
+  // PASSWORD TOGGLE
+  const toggleBtn = document.getElementById("togglePassword");
+  const passwordInput = document.getElementById("password");
+  const iconShow = document.getElementById("icon-show");
+  const iconHide = document.getElementById("icon-hide");
+
+  if (toggleBtn && passwordInput) {
+    toggleBtn.addEventListener("click", () => {
+      const isHidden = passwordInput.type === "password";
+      passwordInput.type = isHidden ? "text" : "password";
+      iconShow.classList.toggle("hidden", isHidden);
+      iconHide.classList.toggle("hidden", !isHidden);
+    });
+  }
+}
 }

@@ -60,28 +60,48 @@ export default class RegisterPage {
     `;
   }
 
-  afterRender() {
-    const form = document.getElementById("registerForm");
+afterRender() {
+  const form = document.getElementById("registerForm");
 
-    if (form) {
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-        const nama = document.getElementById("regNama").value;
-        const email = document.getElementById("regEmail").value;
-        const password = document.getElementById("regPassword").value;
-        const alamat = document.getElementById("regAlamat").value;
+      const name = document.getElementById("regNama").value;
+      const email = document.getElementById("regEmail").value;
+      const password = document.getElementById("regPassword").value;
+      const alamat = document.getElementById("regAlamat").value;
 
-        alert(`
-Registrasi Berhasil!
-Nama: ${nama}
-Email: ${email}
-Password: ${password}
-Alamat: ${alamat}
-        `);
+      try {
+        const response = await fetch("http://localhost:5000/api/auth/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+            alamat
+          }),
+        });
+
+        const result = await response.json();
+        console.log(result);
+
+        if (!response.ok) {
+          alert(`Gagal registrasi: ${result.message}`);
+          return;
+        }
+
+        alert("Registrasi Berhasil!");
 
         window.location.hash = "#/login";
-      });
-    }
+      } catch (error) {
+        console.error(error);
+        alert("Terjadi error koneksi ke server.");
+      }
+    });
   }
+}
 }
