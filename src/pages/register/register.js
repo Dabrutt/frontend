@@ -1,7 +1,7 @@
 export default class RegisterPage {
   render() {
     return `
-      <main class="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-5 py-10">
+      <main class="w-full max-w-5xl mx-auto mt-5 grid grid-cols-1 md:grid-cols-2 gap-10 px-5 py-10">
 
         <section class="bg-gray-200 w-full h-[420px] rounded"></section>
 
@@ -60,48 +60,51 @@ export default class RegisterPage {
     `;
   }
 
-afterRender() {
-  const form = document.getElementById("registerForm");
+  afterRender() {
+    const form = document.getElementById("registerForm");
 
-  if (form) {
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+    if (form) {
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-      const name = document.getElementById("regNama").value;
-      const email = document.getElementById("regEmail").value;
-      const password = document.getElementById("regPassword").value;
-      const city = document.getElementById("regAlamat").value;
+        const name = document.getElementById("regNama").value;
+        const email = document.getElementById("regEmail").value;
+        const password = document.getElementById("regPassword").value;
+        const city = document.getElementById("regAlamat").value;
 
-      try {
-        const response = await fetch("http://localhost:5000/api/auth/register", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            password,
-            city
-          }),
-        });
+        try {
+          const response = await fetch(
+            "http://localhost:5000/api/auth/register",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                name,
+                email,
+                password,
+                city,
+              }),
+            }
+          );
 
-        const result = await response.json();
-        console.log(result);
+          const result = await response.json();
+          console.log(result);
 
-        if (!response.ok) {
-          alert(`Gagal registrasi: ${result.message}`);
-          return;
+          if (!response.ok) {
+            alert(`Gagal registrasi: ${result.message}`);
+            return;
+          }
+
+          alert("Registrasi Berhasil!");
+
+          window.location.hash = "#/login";
+        } catch (error) {
+          console.error(error);
+          alert("Terjadi error koneksi ke server.");
         }
-
-        alert("Registrasi Berhasil!");
-
-        window.location.hash = "#/login";
-      } catch (error) {
-        console.error(error);
-        alert("Terjadi error koneksi ke server.");
-      }
-    });
+      });
+    }
   }
-}
 }

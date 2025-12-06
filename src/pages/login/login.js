@@ -1,17 +1,16 @@
 export default class LoginPage {
-
   render() {
     return `
       
       <!-- MAIN CONTENT -->
       <main class="flex-1 flex items-center justify-center p-4">
 
-        <div class="bg-white rounded-2xl shadow-xl flex flex-col md:flex-row overflow-hidden max-w-[950px] w-full">
+        <div class="bg-white rounded-2xl mt-10 shadow-xl flex flex-col md:flex-row overflow-hidden max-w-[950px] w-full">
 
           <!-- LEFT IMAGE -->
           <div class="hidden md:flex md:w-1/2 bg-gray-100 items-center justify-center relative bg-[#eef2f5]">
-            <img src="https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/commons/homepage-hero.png"
-                 alt="Dicoding Hero"
+            <img src="/image/login.png"
+                 alt="Login Picture"
                  class="w-full h-full object-cover object-center"
                  onerror="this.src='https://placehold.co/600x600/e2e8f0/a0aec0?text=Hero+Image'" />
           </div>
@@ -20,7 +19,7 @@ export default class LoginPage {
           <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
 
             <div class="mb-8">
-              <h2 class="text-gray-500 text-[14px] font-medium mb-2">Selamat Datang di Dicoding</h2>
+              <h2 class="text-gray-500 text-[14px] font-medium mb-2">Selamat Datang di LearnFlow</h2>
               <h1 class="text-[26px] md:text-[28px] font-bold text-[#2d3e50] leading-tight">
                 Permudah alur belajar dan produktivitasmu
               </h1>
@@ -44,7 +43,7 @@ export default class LoginPage {
                   transition-all placeholder-gray-400 pr-12">
 
                 <button type="button" id="togglePassword"
-                  class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 
+                  class="absolute right-4 top-10 transform -translate-y-1/2 text-gray-400 
                   hover:text-gray-600 focus:outline-none p-1 cursor-pointer">
 
                   <!-- ICON SHOW -->
@@ -96,65 +95,65 @@ export default class LoginPage {
     `;
   }
 
-afterRender() {
-  const form = document.getElementById("login-form");
+  afterRender() {
+    const form = document.getElementById("login-form");
 
-  if (form) {
-    const emailInput = form.querySelector("input[type='email']");
-    const passwordInput = document.getElementById("password");
+    if (form) {
+      const emailInput = form.querySelector("input[type='email']");
+      const passwordInput = document.getElementById("password");
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-      const payload = {
-        email: emailInput.value,
-        password: passwordInput.value,
-      };
+        const payload = {
+          email: emailInput.value,
+          password: passwordInput.value,
+        };
 
-      console.log("📤 Sending Login Request:", payload);
+        console.log("📤 Sending Login Request:", payload);
 
-      try {
-        const res = await fetch("http://localhost:5000/api/auth/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        });
+        try {
+          const res = await fetch("http://localhost:5000/api/auth/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          });
 
-        console.log("📥 Response Status:", res.status);
+          console.log("📥 Response Status:", res.status);
 
-        const data = await res.json();
-        console.log("📥 Response JSON:", data);
+          const data = await res.json();
+          console.log("📥 Response JSON:", data);
 
-        if (res.ok) {
-          localStorage.setItem("token", data.token);
-          alert("Login Berhasil!");
-          // contoh redirect
-          window.location.hash = "/dashboard";
-        } else {
-          alert("Login Gagal: " + data.message);
+          if (res.ok) {
+            localStorage.setItem("token", data.token);
+            alert("Login Berhasil!");
+            // contoh redirect
+            window.location.hash = "/dashboard";
+          } else {
+            alert("Login Gagal: " + data.message);
+          }
+        } catch (error) {
+          console.error("❌ Network Error:", error);
+          alert("Tidak bisa terhubung ke server.");
         }
-      } catch (error) {
-        console.error("❌ Network Error:", error);
-        alert("Tidak bisa terhubung ke server.");
-      }
-    });
-  }
+      });
+    }
 
-  // PASSWORD TOGGLE
-  const toggleBtn = document.getElementById("togglePassword");
-  const passwordInput = document.getElementById("password");
-  const iconShow = document.getElementById("icon-show");
-  const iconHide = document.getElementById("icon-hide");
+    // PASSWORD TOGGLE
+    const toggleBtn = document.getElementById("togglePassword");
+    const passwordInput = document.getElementById("password");
+    const iconShow = document.getElementById("icon-show");
+    const iconHide = document.getElementById("icon-hide");
 
-  if (toggleBtn && passwordInput) {
-    toggleBtn.addEventListener("click", () => {
-      const isHidden = passwordInput.type === "password";
-      passwordInput.type = isHidden ? "text" : "password";
-      iconShow.classList.toggle("hidden", isHidden);
-      iconHide.classList.toggle("hidden", !isHidden);
-    });
+    if (toggleBtn && passwordInput) {
+      toggleBtn.addEventListener("click", () => {
+        const isHidden = passwordInput.type === "password";
+        passwordInput.type = isHidden ? "text" : "password";
+        iconShow.classList.toggle("hidden", isHidden);
+        iconHide.classList.toggle("hidden", !isHidden);
+      });
+    }
   }
-}
 }

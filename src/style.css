@@ -1,92 +1,48 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-/* Global Styles */
-body {
+
+/* =========================================
+   1. GLOBAL RESET & VARIABLES
+   ========================================= */
+:root {
+  --primary-blue: #1c2d5a;
+  --dark-blue: #152243;
+  --light-gray: #f2f4f7;
+  --medium-gray: #e5e7eb;
+  --text-color: #374151;
+  --green-status: #10b981;
+  --red-status: #ef4444;
+  --border-color: #d1d5db;
+}
+
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: "Poppins", sans-serif;
-  background-color: #f0f2f5;
+  background-color: #f0f2f5; /* Default background */
   color: #333;
+  line-height: 1.6;
 }
 
 #app {
   min-height: 100vh;
 }
 
-/* Navigation */
-nav {
-  background-color: #1e73be;
-  color: white;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-nav h1 {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 1rem;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-nav a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Main Content */
-main {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Page Styles */
-.page {
-  background: white;
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.page h1 {
-  color: #1e73be;
-  margin-bottom: 1rem;
-}
-
-.page h2 {
-  color: #00b884;
-  margin-bottom: 0.5rem;
-}
-
-/* Forms */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 400px;
-}
-
+/* =========================================
+   2. GENERIC COMPONENTS (Forms, Buttons)
+   ========================================= */
+/* Hati-hati menggunakan tag selector global */
 input,
 button {
   padding: 0.75rem;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1rem;
+  font-family: inherit;
 }
 
 input:focus {
@@ -95,36 +51,17 @@ input:focus {
   box-shadow: 0 0 0 2px rgba(30, 115, 190, 0.2);
 }
 
+/* Base Button Style */
 button {
-  background-color: #05165b;
-  color: white;
-  border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-button:hover {
-  background-color: #3450be;
-}
+/* =========================================
+   3. AUTH PAGES (Login & Register)
+   ========================================= */
 
-/* Responsive */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  main {
-    padding: 1rem;
-  }
-}
-
-/* Register Page Styles */
+/* Register Styles */
 .register-container {
   display: flex;
   background-color: #ffffff;
@@ -135,7 +72,7 @@ button:hover {
   align-items: center;
   max-width: 1000px;
   width: 90%;
-  margin: 0 auto;
+  margin: 40px auto;
 }
 
 .image-placeholder {
@@ -184,7 +121,6 @@ button:hover {
   border: 1px solid #cdd4da;
   border-radius: 8px;
   outline: none;
-  transition: all 0.3s ease;
   font-size: 15px;
   color: #333;
 }
@@ -228,12 +164,8 @@ button:hover {
   border-radius: 8px;
   padding: 15px;
   font-size: 17px;
-  cursor: pointer;
-  margin-top: 25px;
   font-weight: 600;
-  transition:
-    background-color 0.3s ease,
-    transform 0.2s ease;
+  margin-top: 25px;
   letter-spacing: 0.5px;
 }
 
@@ -242,47 +174,7 @@ button:hover {
   transform: translateY(-2px);
 }
 
-@media (max-width: 992px) {
-  .register-container {
-    flex-direction: column;
-    padding: 30px;
-    gap: 30px;
-  }
-
-  .image-placeholder {
-    width: 100%;
-    height: 300px;
-  }
-
-  .form-section {
-    width: 100%;
-  }
-}
-
-@media (max-width: 576px) {
-  .register-container {
-    padding: 20px;
-  }
-
-  .form-section h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-
-  .btn-login {
-    padding: 12px;
-    font-size: 16px;
-  }
-}
-
-.navbar nav {
-  background-color: transparent !important;
-  color: inherit !important;
-  padding: 0 !important;
-  box-shadow: none !important;
-}
-
-/* Login Page Style */
+/* Login Styles */
 .login-container {
   display: flex;
   align-items: center;
@@ -296,7 +188,6 @@ button:hover {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
 }
 
-/* Left Image Section */
 .login-image {
   width: 420px;
   height: 420px;
@@ -314,7 +205,6 @@ button:hover {
   object-fit: cover;
 }
 
-/* Right Form Section */
 .login-form {
   width: 380px;
   display: flex;
@@ -330,7 +220,6 @@ button:hover {
   line-height: 1.3;
 }
 
-/* Input Fields */
 #login-form {
   display: flex;
   flex-direction: column;
@@ -338,22 +227,18 @@ button:hover {
 }
 
 #login-form input {
-  width: 100%; /* ✅ bikin email & password sama panjang */
-  box-sizing: border-box; /* ✅ padding tidak mengubah ukuran */
+  width: 100%;
   padding: 14px 16px;
   border: 1px solid #d3d9df;
   border-radius: 8px;
   font-size: 15px;
-  transition: 0.3s;
 }
 
 #login-form input:focus {
   border-color: #05165b;
   box-shadow: 0 0 0 3px rgba(5, 22, 91, 0.15);
-  outline: none;
 }
 
-/* Forgot Password */
 .forgot {
   font-size: 14px;
   text-align: right;
@@ -366,7 +251,6 @@ button:hover {
   text-decoration: underline;
 }
 
-/* Login Button */
 .login-btn {
   background: #05165b;
   color: #fff;
@@ -375,9 +259,7 @@ button:hover {
   padding: 15px;
   font-size: 17px;
   font-weight: 600;
-  cursor: pointer;
   margin-top: 10px;
-  transition: 0.3s;
 }
 
 .login-btn:hover {
@@ -385,71 +267,54 @@ button:hover {
   transform: translateY(-2px);
 }
 
-/* Responsive Breakpoints */
+/* Auth Responsive */
 @media (max-width: 992px) {
+  .register-container,
   .login-container {
     flex-direction: column;
     padding: 30px;
-    gap: 35px;
+    gap: 30px;
   }
-
+  .image-placeholder,
   .login-image {
     width: 100%;
     height: 300px;
   }
-
+  .form-section,
   .login-form {
     width: 100%;
   }
 }
 
 @media (max-width: 576px) {
+  .register-container,
   .login-container {
-    padding: 22px;
+    padding: 20px;
   }
-
+  .form-section h2,
   .login-form h2 {
     font-size: 24px;
+    margin-bottom: 20px;
   }
-
+  .btn-login,
   .login-btn {
     padding: 12px;
     font-size: 16px;
   }
 }
 
-/*Page Progress*/
+/* =========================================
+   4. DASHBOARD & PROGRESS (Layout)
+   ========================================= */
 
-:root {
-  --primary-blue: #1c2d5a;
-  --dark-blue: #152243;
-  --light-gray: #f2f4f7;
-  --medium-gray: #e5e7eb;
-  --text-color: #374151;
-  --green-status: #10b981;
-  --red-status: #ef4444;
-  --border-color: #d1d5db;
-}
-
-/* Reset sederhana untuk konten dashboard */
-.dashboard-layout * {
-  box-sizing: border-box;
-}
-
-/* 
-   Layout Utama Dashboard 
-   Kita ubah nama class jadi .dashboard-layout agar tidak bentrok
-   dan menghapus area 'navbar' karena navbar sudah ada di luar router
-*/
 .dashboard-layout {
   display: grid;
   grid-template-columns: 250px 1fr; /* Sidebar | Content */
-  min-height: calc(100vh - 70px); /* Asumsi tinggi navbar global ~70px */
-  font-family: "Poppins", sans-serif;
+  min-height: calc(100vh - 70px);
   color: var(--text-color);
 }
 
-/* --- Sidebar --- */
+/* Sidebar */
 .sidebar {
   background-color: #fff;
   padding: 2rem 0;
@@ -458,11 +323,8 @@ button:hover {
 
 .sidebar nav ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
-/* Link Reset untuk Sidebar agar tidak ada garis bawah default */
 .sidebar-link {
   text-decoration: none;
   color: inherit;
@@ -492,7 +354,6 @@ button:hover {
   height: 20px;
   width: 20px;
   margin-right: 1rem;
-  /* Filter icon agar sesuai warna */
   filter: invert(40%) sepia(93%) saturate(1352%) hue-rotate(200deg)
     brightness(90%) contrast(90%);
 }
@@ -505,7 +366,7 @@ button:hover {
   font-weight: 600;
 }
 
-/* --- Content Area --- */
+/* Dashboard Content */
 .content {
   padding: 2rem 3rem;
   background-color: var(--light-gray);
@@ -615,316 +476,52 @@ button:hover {
   background-color: var(--dark-blue);
 }
 
-/* --- Responsive --- */
+/* Dashboard Responsive */
 @media (max-width: 768px) {
   .dashboard-layout {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
   }
-
   .sidebar {
     border-right: none;
     border-bottom: 1px solid var(--medium-gray);
     padding: 0.5rem 0;
   }
-
   .sidebar nav ul {
     display: flex;
     justify-content: space-around;
   }
-
   .sidebar-item {
     padding: 0.5rem 1rem;
     flex-direction: column;
     text-align: center;
     font-size: 0.8rem;
   }
-
   .sidebar-link {
     flex-direction: column;
   }
-
   .sidebar-item img {
     margin-right: 0;
     margin-bottom: 5px;
   }
-
   .content {
     padding: 1.5rem;
   }
-
   .class-item {
     flex-wrap: wrap;
     gap: 10px;
   }
-
   .detail-button {
     width: 100%;
     margin-top: 5px;
   }
 }
 
-/*Progress Page Style*/
+/* =========================================
+   5. LANDING PAGE
+   ========================================= */
 
-:root {
-  --primary-blue: #1c2d5a;
-  --dark-blue: #152243;
-  --light-gray: #f2f4f7;
-  --medium-gray: #e5e7eb;
-  --text-color: #374151;
-  --green-status: #10b981;
-  --red-status: #ef4444;
-  --border-color: #d1d5db;
-}
-
-/* Reset sederhana untuk konten dashboard */
-.dashboard-layout * {
-  box-sizing: border-box;
-}
-
-/* 
-   Layout Utama Dashboard 
-   Kita ubah nama class jadi .dashboard-layout agar tidak bentrok
-   dan menghapus area 'navbar' karena navbar sudah ada di luar router
-*/
-.dashboard-layout {
-  display: grid;
-  grid-template-columns: 250px 1fr; /* Sidebar | Content */
-  min-height: calc(100vh - 70px); /* Asumsi tinggi navbar global ~70px */
-  font-family: "Poppins", sans-serif;
-  color: var(--text-color);
-}
-
-/* --- Sidebar --- */
-.sidebar {
-  background-color: #fff;
-  padding: 2rem 0;
-  border-right: 1px solid var(--medium-gray);
-}
-
-.sidebar nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* Link Reset untuk Sidebar agar tidak ada garis bawah default */
-.sidebar-link {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.sidebar-item {
-  display: flex;
-  align-items: center;
-  padding: 1rem 2rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.sidebar-item:hover {
-  background-color: var(--light-gray);
-}
-
-.sidebar-item.active {
-  background-color: var(--primary-blue);
-  color: #fff;
-}
-
-.sidebar-item img {
-  height: 20px;
-  width: 20px;
-  margin-right: 1rem;
-  /* Filter icon agar sesuai warna */
-  filter: invert(40%) sepia(93%) saturate(1352%) hue-rotate(200deg)
-    brightness(90%) contrast(90%);
-}
-
-.sidebar-item.active img {
-  filter: invert(100%) brightness(103%);
-}
-
-.sidebar-item span {
-  font-weight: 600;
-}
-
-/* --- Content Area --- */
-.content {
-  padding: 2rem 3rem;
-  background-color: var(--light-gray);
-}
-
-.page-title {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--dark-blue);
-  margin-bottom: 2rem;
-}
-
-.class-section {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  margin-bottom: 2.5rem;
-  padding: 1.5rem 2rem;
-}
-
-.section-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
-.section-header img {
-  height: 24px;
-  width: 24px;
-  margin-right: 0.75rem;
-}
-
-.section-header h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--primary-blue);
-}
-
-.section-description {
-  font-size: 0.9rem;
-  color: #6b7280;
-  margin-bottom: 1.5rem;
-  margin-left: 3.25rem;
-}
-
-.class-list {
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.class-item {
-  display: flex;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid var(--border-color);
-  background-color: #fff;
-}
-
-.class-item:last-child {
-  border-bottom: none;
-}
-
-.status-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: white;
-  margin-right: 1rem;
-  flex-shrink: 0;
-}
-
-.class-item.completed .status-icon {
-  background-color: var(--green-status);
-}
-
-.class-item.in-progress .status-icon {
-  background-color: var(--red-status);
-}
-
-.class-item span {
-  flex-grow: 1;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-color);
-}
-
-.detail-button {
-  background-color: var(--primary-blue);
-  color: #fff;
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-  white-space: nowrap;
-}
-
-.detail-button:hover {
-  background-color: var(--dark-blue);
-}
-
-/* --- Responsive --- */
-@media (max-width: 768px) {
-  .dashboard-layout {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-  }
-
-  .sidebar {
-    border-right: none;
-    border-bottom: 1px solid var(--medium-gray);
-    padding: 0.5rem 0;
-  }
-
-  .sidebar nav ul {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .sidebar-item {
-    padding: 0.5rem 1rem;
-    flex-direction: column;
-    text-align: center;
-    font-size: 0.8rem;
-  }
-
-  .sidebar-link {
-    flex-direction: column;
-  }
-
-  .sidebar-item img {
-    margin-right: 0;
-    margin-bottom: 5px;
-  }
-
-  .content {
-    padding: 1.5rem;
-  }
-
-  .class-item {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .detail-button {
-    width: 100%;
-    margin-top: 5px;
-  }
-}
-/*Page Landing Style*/
-/* Landing Page Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background-color: #f8f9fa;
-}
-
-/* Navbar */
+/* Navbar Specific for Landing */
 .navbar {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -934,6 +531,15 @@ body {
   z-index: 1000;
 }
 
+/* Resetting navbar overrides if generic 'nav' tag is used inside .navbar */
+.navbar nav {
+  background-color: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  display: block; /* Mencegah flexbox global nav mengacaukan layout */
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -941,11 +547,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  height: 50px;
 }
 
 .navbar img {
-  height: 40px;
+  height: 30px;
 }
 
 .nav-links ul {
@@ -1112,46 +718,38 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Design */
+/* Landing Responsive */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
     height: auto;
     padding: 20px;
   }
-
   .nav-links {
     margin: 20px 0;
   }
-
   .nav-links ul {
     flex-direction: column;
     gap: 15px;
   }
-
   .nav-links li {
     margin-left: 0;
   }
-
   .hero {
     flex-direction: column;
     text-align: center;
     padding: 120px 20px 60px;
   }
-
   .hero-text h1 {
     font-size: 2.5rem;
   }
-
   .hero-text p {
     font-size: 1rem;
   }
-
   .feature-main {
     flex-direction: column;
     gap: 40px;
   }
-
   .feature-head h1 {
     font-size: 2rem;
   }
@@ -1161,16 +759,13 @@ body {
   .hero-text h1 {
     font-size: 2rem;
   }
-
   .cta {
     padding: 12px 24px;
     font-size: 1rem;
   }
-
   .feature-head h1 {
     font-size: 1.8rem;
   }
-
   .feature-box p {
     font-size: 0.9rem;
   }
