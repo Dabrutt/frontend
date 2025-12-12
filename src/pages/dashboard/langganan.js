@@ -46,7 +46,9 @@ export default class LanggananPage {
             </div>
 
             <!-- Grey Placeholder Box (Banner) -->
-            <div class="w-full h-48 bg-gray-200 rounded-md mb-8"></div>
+            <div class="w-full h-48 bg-gray-200 rounded-md mb-8 border-2 border-solid border-gray-300 overflow-hidden">
+                <img src="/image/langganan-banner.png" alt="Banner Langganan" class="w-full h-full object-cover rounded-md">
+            </div>
 
             <!-- SECTION 1: Status Langganan -->
             <div class="mb-8 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
@@ -66,7 +68,7 @@ export default class LanggananPage {
                     <div class="flex items-center gap-4">
                         <i class="fa-regular fa-file-lines text-2xl text-slate-900"></i>
                         <p class="text-slate-700 text-sm md:text-base">
-                            Anda belum berlangganan Dicoding Academy. Pilih paket langganan dan mulai lah perjalanan Anda menjadi developer profesional.
+                            Anda belum berlangganan LearnFlow. Pilih paket langganan dan mulai lah perjalanan Anda menjadi developer profesional.
                         </p>
                     </div>
                     <button class="whitespace-nowrap bg-[#0f1742] hover:bg-blue-900 text-white text-sm font-medium py-2.5 px-6 rounded transition-colors cursor-pointer">

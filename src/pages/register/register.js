@@ -3,7 +3,9 @@ export default class RegisterPage {
     return `
       <main class="w-full max-w-5xl mx-auto mt-5 grid grid-cols-1 md:grid-cols-2 gap-10 px-5 py-10">
 
-        <section class="bg-gray-200 w-full h-[420px] rounded"></section>
+        <section class="bg-gray-100 w-full h-[420px] rounded">
+          <img src="/image/register.png" alt="Register Illustration" class="w-full h-full object-cover rounded">
+        </section>
 
         <section class="flex flex-col justify-center">
           <h1 class="text-2xl font-semibold mb-5">Daftar Sekarang</h1>

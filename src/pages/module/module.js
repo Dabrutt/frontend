@@ -8,7 +8,7 @@ export default class ModulePage {
   async getHtml() {
     return `
       <div class="min-h-screen bg-gray-50 font-sans p-6">
-        <div class="max-w-4xl mx-auto space-y-6">
+        <div class="max-w-4xl mx-auto mt-10 space-y-6">
           <!-- Header -->
           <div>
             <h2 id="module-title" class="text-2xl font-bold text-[#0f1742]">Memuat Modul...</h2>
@@ -54,14 +54,18 @@ export default class ModulePage {
       // Ambil semua chapter + subchapters
       const chapters = await modulesAPI.getChapters(moduleId);
       for (const chapter of chapters) {
-        chapter.subchapters = await modulesAPI.getSubchapters(moduleId, chapter.id);
+        chapter.subchapters = await modulesAPI.getSubchapters(
+          moduleId,
+          chapter.id
+        );
       }
 
       // Gabungkan semua subchapters
-      const subchapters = chapters.flatMap(ch => ch.subchapters);
+      const subchapters = chapters.flatMap((ch) => ch.subchapters);
 
       // Update header
-      if (titleEl) titleEl.textContent = moduleData.title || "Modul Tanpa Judul";
+      if (titleEl)
+        titleEl.textContent = moduleData.title || "Modul Tanpa Judul";
       if (descEl) descEl.textContent = moduleData.description || "";
 
       // Render subchapters
@@ -72,7 +76,9 @@ export default class ModulePage {
 
       const subHTML = subchapters
         .map((sub) => {
-          const progressObj = overviewData.modules?.find((m) => m.id === sub.module_id);
+          const progressObj = overviewData.modules?.find(
+            (m) => m.id === sub.module_id
+          );
           const progress = progressObj ? parseInt(progressObj.progress) : 0;
           const btnText = progress >= 100 ? "Ulas Kembali" : "Mulai";
 

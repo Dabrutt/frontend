@@ -31,13 +31,9 @@ class ProfilePage {
             </div>
 
             <!-- Kotak Maskot -->
-            <div class="w-full md:w-64 h-40 bg-[#f08702] rounded-md flex items-center justify-center p-4 text-center shrink-0 shadow-lg mt-4 md:mt-0 transition-transform hover:scale-105 cursor-pointer">
-              <p class="text-white font-medium text-sm px-2">
-                <i class="fa-solid fa-robot text-2xl mb-2 block"></i>
-                Karakter Penyemangat atau Maskot
-              </p>
+            <div class="w-full md:w-64 h-48 rounded-md flex items-center justify-center p-4 text-center shrink-0 mt-4 md:mt-0 transition-transform hover:scale-105 cursor-pointer">
+              <img src="/image/LearnFlow-mascot.png" alt="LearnFlow Mascot" class="max-w-full max-h-full">
             </div>
-
           </div>
         </div>
 
@@ -172,9 +168,7 @@ class ProfilePage {
           <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm flex flex-col md:flex-row gap-6 hover:shadow-md transition-shadow group">
             
             <div class="w-full md:w-32 h-32 bg-gray-100 rounded-md shrink-0 flex items-center justify-center text-gray-400 group-hover:bg-gray-200 transition-colors">
-               <!-- Jika ada gambar modul: <img src="${
-                 module.imageUrl
-               }" ...> -->
+               <img src="/image/module-icon.png" alt="Course Image" class="w-full h-full object-cover object-center"/>
                <i class="fa-solid fa-image text-3xl"></i>
             </div>
 

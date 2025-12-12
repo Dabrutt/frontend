@@ -8,7 +8,7 @@ export default class LoginPage {
         <div class="bg-white rounded-2xl mt-10 shadow-xl flex flex-col md:flex-row overflow-hidden max-w-[950px] w-full">
 
           <!-- LEFT IMAGE -->
-          <div class="hidden md:flex md:w-1/2 bg-gray-100 items-center justify-center relative bg-[#eef2f5]">
+          <div class="hidden md:flex md:w-1/2 bg-gray-100 items-center justify-center relative">
             <img src="/image/login.png"
                  alt="Login Picture"
                  class="w-full h-full object-cover object-center"
@@ -113,13 +113,16 @@ export default class LoginPage {
         console.log("📤 Sending Login Request:", payload);
 
         try {
-          const res = await fetch("https://api.rakasatriaefendi.site/api/auth/login", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
-          });
+          const res = await fetch(
+            "https://api.rakasatriaefendi.site/api/auth/login",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(payload),
+            }
+          );
 
           console.log("📥 Response Status:", res.status);
 

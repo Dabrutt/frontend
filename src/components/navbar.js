@@ -5,7 +5,7 @@ export const navbar = `
     <!-- LEFT: LOGO -->
     <a href="#/" class="flex items-center gap-2">
       <!-- Menggunakan placeholder jika gambar tidak ada -->
-      <img src="/image/dicoding-header-logo.png" alt="Dicoding Logo" class="h-8 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
+        <img src="/image/learnflow-header-logo.png" alt="Dicoding Logo" class="h-8 w-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
       <span class="font-bold text-xl text-slate-800 hidden">dicoding</span>
     </a>
 
