@@ -68,6 +68,14 @@ export default class ModulePage {
         titleEl.textContent = moduleData.title || "Modul Tanpa Judul";
       if (descEl) descEl.textContent = moduleData.description || "";
 
+      // Hitung progress modul dari overview (gunakan loose equality untuk aman)
+      const moduleProgressObj = overviewData.modules?.find(
+        (m) => m.id == moduleData.id
+      );
+      const moduleProgress = moduleProgressObj
+        ? parseInt(moduleProgressObj.progress)
+        : 0;
+
       // Render subchapters
       if (subchapters.length === 0) {
         subListEl.innerHTML = `<p class="text-gray-400 text-sm text-center p-6">Modul ini belum memiliki subchapter.</p>`;
@@ -76,10 +84,8 @@ export default class ModulePage {
 
       const subHTML = subchapters
         .map((sub) => {
-          const progressObj = overviewData.modules?.find(
-            (m) => m.id === sub.module_id
-          );
-          const progress = progressObj ? parseInt(progressObj.progress) : 0;
+          // tampilkan progress modul yang sama untuk setiap subchapter
+          const progress = moduleProgress;
           const btnText = progress >= 100 ? "Ulas Kembali" : "Mulai";
 
           return `
